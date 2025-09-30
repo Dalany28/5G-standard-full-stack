@@ -1,8 +1,6 @@
 @ -1 +1,363 @@
-# e2e-bc-5g
-# e2e-bc-5g
 
-# 🧪 Full Implementation Installation Guide
+# 🧪 Full 5G Implementation Installation Guide
 
 This document provides a full walkthrough for installing and configuring the 5G testbed environment. It includes hardware and software requirements, step-by-step instructions, and test validation.
 
