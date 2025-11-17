@@ -233,16 +233,16 @@ MM-DEREGISTERED -> PLMN-SEARCH -> REGISTERED
 
 ## ✅ Verify Connectivity
 
-### 7.1 Ping the AMF from your host
+### 6.3 Ping the AMF from your host
     
 
 `ping 192.168.0.111` 
 
-### 7.2 Check if SCTP port is listening (used for NGAP between gNB and AMF):
+### 6.4 Check if SCTP port is listening (used for NGAP between gNB and AMF):
    
 `ss -lntp | grep 38412` 
 
-### 7.3 Check ogstun interafec:
+### 6.5 Check ogstun interafec:
     
 
 `ip addr show ogstun` 
