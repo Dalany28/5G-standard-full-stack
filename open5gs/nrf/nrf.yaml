@@ -1,0 +1,9 @@
+nrf:
+  sbi:
+    server:
+      - address: 192.168.0.100
+        port: 7777
+
+  plmn_id:
+    mcc: 001
+    mnc: 01

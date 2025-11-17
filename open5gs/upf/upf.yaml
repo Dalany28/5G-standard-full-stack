@@ -1,0 +1,13 @@
+upf:
+  pfcp:
+    server:
+      - address: 192.168.0.112
+
+  gtpu:
+    server:
+      - address: 192.168.0.112
+
+  session:
+    - subnet: 10.45.0.1/16
+      dnn: internet
+      dev: ogstun

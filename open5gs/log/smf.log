@@ -1,0 +1,92 @@
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/03 23:38:38.109: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/smf.yaml' (../lib/app/ogs-init.c:144)
+11/03 23:38:38.109: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/smf.log' (../lib/app/ogs-init.c:147)
+11/03 23:38:38.176: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/context.c:459)
+11/03 23:38:38.176: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.35:7777] (../lib/sbi/context.c:507)
+11/03 23:38:38.176: [metrics] INFO: metrics_server() [http://172.22.0.7]:9091 (../lib/metrics/prometheus/context.c:391)
+11/03 23:38:38.267: [app] INFO: Polling freeDiameter stats every 60000000 usecs (../lib/diameter/common/stats.c:77)
+11/03 23:38:38.267: [gtp] INFO: gtp_server() [172.22.0.7]:2123 (../lib/gtp/path.c:30)
+11/03 23:38:38.267: [gtp] INFO: gtp_server() [172.22.0.7]:2152 (../lib/gtp/path.c:30)
+11/03 23:38:38.267: [pfcp] INFO: pfcp_server() [172.22.0.7]:8805 (../lib/pfcp/path.c:30)
+11/03 23:38:38.268: [sbi] INFO: NF Service [nsmf-pdusession] (../lib/sbi/context.c:1997)
+11/03 23:38:38.269: [sbi] INFO: nghttp2_server() [http://172.22.0.7]:7777 (../lib/sbi/nghttp2-server.c:439)
+11/03 23:38:38.269: [app] INFO: SMF initialize...done (../src/smf/app.c:31)
+11/03 23:38:38.270: [smf] INFO: PFCP associated [172.22.0.8]:8805 (../src/smf/pfcp-sm.c:189)
+11/03 23:38:38.273: [sbi] INFO: [d701ea04-b905-41f0-9bf9-e5f7b2297757] NF registered [Heartbeat:10s] (../lib/sbi/nf-sm.c:295)
+11/03 23:38:38.275: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/nnrf-handler.c:955)
+11/03 23:38:38.275: [sbi] INFO: [d711e1e8-b905-41f0-9c1d-f9d1038fbf14] Subscription created until 2025-11-04T23:38:38.273407+01:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+11/03 23:38:38.275: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/nnrf-handler.c:955)
+11/03 23:38:38.275: [sbi] INFO: [d711f1c4-b905-41f0-9c1d-f9d1038fbf14] Subscription created until 2025-11-04T23:38:38.273829+01:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+11/03 23:38:38.275: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/nnrf-handler.c:955)
+11/03 23:38:38.275: [sbi] INFO: [d711fc14-b905-41f0-9c1d-f9d1038fbf14] Subscription created until 2025-11-04T23:38:38.274108+01:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+11/03 23:38:38.275: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/nnrf-handler.c:955)
+11/03 23:38:38.275: [sbi] INFO: [d71214f6-b905-41f0-9c1d-f9d1038fbf14] Subscription created until 2025-11-04T23:38:38.274695+01:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+11/03 23:38:38.276: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/nnrf-handler.c:955)
+11/03 23:38:38.276: [sbi] INFO: [d7122a04-b905-41f0-9c1d-f9d1038fbf14] Subscription created until 2025-11-04T23:38:38.275261+01:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+11/03 23:38:38.278: [sbi] INFO: [d683310a-b905-41f0-8c1f-39f83fa5c2dc] (NRF-profile-get) NF registered (../lib/sbi/nf-sm.c:81)
+11/03 23:38:38.278: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.13:80] (../lib/sbi/context.c:2399)
+11/03 23:38:38.278: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.13:7777] (../lib/sbi/context.c:2116)
+11/03 23:38:38.278: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.13:7777] (../lib/sbi/context.c:2116)
+11/03 23:38:38.278: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.13:7777] (../lib/sbi/context.c:2116)
+11/03 23:38:38.278: [sbi] INFO: [d6a76494-b905-41f0-94bc-eb46ed969775] (NRF-profile-get) NF registered (../lib/sbi/nf-sm.c:81)
+11/03 23:38:38.279: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.10:80] (../lib/sbi/context.c:2399)
+11/03 23:38:38.279: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.10:7777] (../lib/sbi/context.c:2116)
+11/03 23:38:40.676: [smf] WARNING: PFCP[REQ] has already been associated [172.22.0.8]:8805 (../src/smf/pfcp-sm.c:287)
+11/03 23:38:47.281: [sbi] INFO: [dc6f6a70-b905-41f0-a99d-01b7b5bc11d3] (NRF-notify) NF registered (../lib/sbi/nnrf-handler.c:1140)
+11/03 23:38:47.282: [sbi] INFO: [dc6f6a70-b905-41f0-a99d-01b7b5bc11d3] (NRF-notify) NF Profile updated [type:PCF] (../lib/sbi/nnrf-handler.c:1154)
+11/03 23:38:47.282: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.27:80] (../lib/sbi/context.c:2399)
+11/03 23:38:47.282: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.27:7777] (../lib/sbi/context.c:2116)
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/04 00:58:09.886: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/smf.yaml' (../lib/app/ogs-init.c:144)
+11/04 00:58:09.886: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/smf.log' (../lib/app/ogs-init.c:147)
+11/04 00:58:09.988: [sbi] INFO: Setup NF EndPoint(addr) [10.42.0.100:7777] (../lib/sbi/context.c:459)
+11/04 00:58:09.988: [sbi] INFO: Setup NF EndPoint(addr) [10.42.0.100:7777] (../lib/sbi/context.c:507)
+11/04 00:58:09.989: [metrics] ERROR: Cannot start Prometheus HTTP server (../lib/metrics/prometheus/context.c:375)
+11/04 00:58:10.018: [diam] ERROR: pid:Main in fd_sctp_create_bind_server@sctp.c:883: ERROR: in '(sctp_bindx(*sock, sar, count, 0x01))' :	Cannot assign requested address
+ ((null):0)
+11/04 00:58:10.018: [diam] ERROR: pid:Main in fd_cnx_serv_sctp@cnxctx.c:181: ERROR: in '(fd_sctp_create_bind_server( &cnx->cc_socket, cnx->cc_family, ep_list, port ))' :	Cannot assign requested address
+ ((null):0)
+11/04 00:58:10.018: [diam] ERROR: pid:Main in fd_servers_start@server.c:355: ERROR: in '(s->conn = fd_cnx_serv_sctp(fd_g_config->cnf_port, empty_conf_ep ? ((void *)0) : &fd_g_config->cnf_endpoints))' :	Transport endpoint is not connected
+ ((null):0)
+11/04 00:58:10.018: [diam] ERROR: pid:Main in fd_core_start_int@core.c:300: ERROR: in '((fd_servers_start()))' :	Transport endpoint is not connected
+ ((null):0)
+11/04 00:58:10.018: [diam] ERROR: pid:Main in ogs_diam_start@init.c:76: ERROR: in '(fd_core_start())' :	Transport endpoint is not connected
+ ((null):0)
+11/04 00:58:10.125: [smf] FATAL: smf_fd_init: Assertion `rv == 0' failed. (../src/smf/fd-path.c:50)
+11/04 00:58:10.125: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+./open5gs-smfd(+0x545fc) [0xbcd6532045fc]
+./open5gs-smfd(+0xfcf0) [0xbcd6531bfcf0]
+./open5gs-smfd(+0xefe4) [0xbcd6531befe4]
+./open5gs-smfd(+0xf960) [0xbcd6531bf960]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xe0b876b77400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xe0b876b774d8]
+./open5gs-smfd(+0xeef0) [0xbcd6531beef0]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/09 20:50:02.980: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/smf.yaml' (../lib/app/ogs-init.c:144)
+11/09 20:50:02.980: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/smf.log' (../lib/app/ogs-init.c:147)
+11/09 20:50:03.021: [gtp] WARNING: unknown key `dnn` (../lib/gtp/context.c:199)
+11/09 20:50:03.021: [pfcp] WARNING: Please change the configuration files of smf.yaml and upf.yaml as below. (../lib/pfcp/context.c:2432)
+
+<OLD Format>
+smf:
+  session:
+    - subnet: 10.45.0.1/16
+
+<NEW Format>
+smf:
+  session:
+    - subnet: 10.45.0.0/16
+      gateway: 10.45.0.1
+
+
+11/09 20:50:03.022: [sbi] INFO: Setup NF EndPoint(addr) [192.168.0.111:7777] (../lib/sbi/context.c:459)
+11/09 20:50:03.022: [sbi] INFO: Setup NF EndPoint(addr) [192.168.0.111:7777] (../lib/sbi/context.c:507)
+11/09 20:50:03.022: [metrics] ERROR: Cannot start Prometheus HTTP server (../lib/metrics/prometheus/context.c:375)
+11/09 20:50:03.082: [app] INFO: Polling freeDiameter stats every 60000000 usecs (../lib/diameter/common/stats.c:77)
+11/09 20:50:03.082: [sock] ERROR: socket bind(2) [192.168.0.111]:2123 failed (99:Cannot assign requested address) (../lib/core/ogs-socket.c:114)
+11/09 20:50:03.082: [sock] ERROR: udp_server() [192.168.0.111]:2123 failed (99:Cannot assign requested address) (../lib/core/ogs-udp.c:67)
+11/09 20:50:03.082: [app] ERROR: Failed to initialize SMF (../src/smf/app.c:28)
+11/09 20:50:03.082: [app] FATAL: Open5GS initialization failed. Aborted (../src/main.c:224)

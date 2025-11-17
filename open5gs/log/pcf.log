@@ -1,0 +1,134 @@
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/03 23:38:47.272: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/pcf.yaml' (../lib/app/ogs-init.c:144)
+11/03 23:38:47.272: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/pcf.log' (../lib/app/ogs-init.c:147)
+11/03 23:38:47.276: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/context.c:459)
+11/03 23:38:47.276: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.35:7777] (../lib/sbi/context.c:507)
+11/03 23:38:47.276: [metrics] INFO: metrics_server() [http://172.22.0.27]:9091 (../lib/metrics/prometheus/context.c:391)
+11/03 23:38:47.278: [dbi] INFO: MongoDB URI: 'mongodb://172.22.0.2/open5gs' (../lib/dbi/ogs-mongoc.c:130)
+11/03 23:38:47.278: [sbi] INFO: NF Service [npcf-am-policy-control] (../lib/sbi/context.c:1997)
+11/03 23:38:47.278: [sbi] INFO: NF Service [npcf-smpolicycontrol] (../lib/sbi/context.c:1997)
+11/03 23:38:47.278: [sbi] INFO: NF Service [npcf-policyauthorization] (../lib/sbi/context.c:1997)
+11/03 23:38:47.278: [sbi] INFO: nghttp2_server() [http://172.22.0.27]:7777 (../lib/sbi/nghttp2-server.c:439)
+11/03 23:38:47.278: [app] INFO: PCF initialize...done (../src/pcf/app.c:31)
+11/03 23:38:47.281: [sbi] INFO: [dc6f6a70-b905-41f0-a99d-01b7b5bc11d3] NF registered [Heartbeat:10s] (../lib/sbi/nf-sm.c:295)
+11/03 23:38:47.283: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/nnrf-handler.c:955)
+11/03 23:38:47.283: [sbi] INFO: [dc708d10-b905-41f0-9c1d-f9d1038fbf14] Subscription created until 2025-11-04T23:38:47.282422+01:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+11/03 23:38:47.283: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/nnrf-handler.c:955)
+11/03 23:38:47.283: [sbi] INFO: [dc708f18-b905-41f0-9c1d-f9d1038fbf14] Subscription created until 2025-11-04T23:38:47.282469+01:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+11/03 23:38:47.283: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/nnrf-handler.c:955)
+11/03 23:38:47.283: [sbi] INFO: [dc709030-b905-41f0-9c1d-f9d1038fbf14] Subscription created until 2025-11-04T23:38:47.282496+01:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+11/03 23:38:47.288: [sbi] INFO: [dc6e6f1c-b905-41f0-b33e-fbc91ded0aac] (NRF-profile-get) NF registered (../lib/sbi/nf-sm.c:81)
+11/03 23:38:47.288: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.14:80] (../lib/sbi/context.c:2399)
+11/03 23:38:47.288: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.14:7777] (../lib/sbi/context.c:2116)
+11/03 23:38:47.431: [sbi] INFO: [dc8705e0-b905-41f0-9d1d-738ee3f6760e] (NRF-notify) NF registered (../lib/sbi/nnrf-handler.c:1140)
+11/03 23:38:47.431: [sbi] INFO: [dc8705e0-b905-41f0-9d1d-738ee3f6760e] (NRF-notify) NF Profile updated [type:BSF] (../lib/sbi/nnrf-handler.c:1154)
+11/03 23:38:47.431: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.29:80] (../lib/sbi/context.c:2399)
+11/03 23:38:47.431: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.29:7777] (../lib/sbi/context.c:2116)
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/04 00:58:18.966: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/pcf.yaml' (../lib/app/ogs-init.c:144)
+11/04 00:58:18.966: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/pcf.log' (../lib/app/ogs-init.c:147)
+11/04 00:58:18.967: [sbi] INFO: Setup NF EndPoint(addr) [10.42.0.100:7777] (../lib/sbi/context.c:459)
+11/04 00:58:18.967: [sbi] INFO: Setup NF EndPoint(addr) [10.42.0.100:7777] (../lib/sbi/context.c:507)
+11/04 00:58:18.968: [metrics] ERROR: Cannot start Prometheus HTTP server (../lib/metrics/prometheus/context.c:375)
+11/04 00:58:22.063: [dbi] WARNING: Failed to connect to server [mongodb://10.42.0.100/open5gs] (../lib/dbi/ogs-mongoc.c:122)
+11/04 00:58:22.063: [app] ERROR: Failed to initialize PCF (../src/pcf/app.c:28)
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/15 19:59:12.468: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/pcf.yaml' (../lib/app/ogs-init.c:144)
+11/15 19:59:12.468: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/pcf.log' (../lib/app/ogs-init.c:147)
+11/15 19:59:12.468: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/15 19:59:12.468: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/15 19:59:12.468: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xeb0ecf53847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xeb0ecf52c15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xeb0ecf4ce620]
+./open5gs-pcfd(+0x5cb4) [0xb71d54375cb4]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xeb0ecebb7400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xeb0ecebb74d8]
+./open5gs-pcfd(+0x52b0) [0xb71d543752b0]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/15 20:03:00.522: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/pcf.yaml' (../lib/app/ogs-init.c:144)
+11/15 20:03:00.522: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/pcf.log' (../lib/app/ogs-init.c:147)
+11/15 20:03:00.522: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/15 20:03:00.522: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/15 20:03:00.522: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xea68dddf847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xea68dddec15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xea68ddd8e620]
+./open5gs-pcfd(+0x5cb4) [0xbb95d3c05cb4]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xea68dd477400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xea68dd4774d8]
+./open5gs-pcfd(+0x52b0) [0xbb95d3c052b0]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/15 20:05:22.638: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/pcf.yaml' (../lib/app/ogs-init.c:144)
+11/15 20:05:22.638: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/pcf.log' (../lib/app/ogs-init.c:147)
+11/15 20:05:22.638: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/15 20:05:22.638: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/15 20:05:22.638: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xf4dbb869847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xf4dbb868c15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xf4dbb862e620]
+./open5gs-pcfd(+0x5cb4) [0xb28028235cb4]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xf4dbb7d17400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xf4dbb7d174d8]
+./open5gs-pcfd(+0x52b0) [0xb280282352b0]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/15 20:16:15.012: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/pcf.yaml' (../lib/app/ogs-init.c:144)
+11/15 20:16:15.012: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/pcf.log' (../lib/app/ogs-init.c:147)
+11/15 20:16:15.012: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/15 20:16:15.012: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/15 20:16:15.012: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xfecd8cbf847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xfecd8cbec15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xfecd8cb8e620]
+./open5gs-pcfd(+0x5cb4) [0xb08d4de95cb4]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xfecd8c277400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xfecd8c2774d8]
+./open5gs-pcfd(+0x52b0) [0xb08d4de952b0]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/16 13:56:58.952: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/pcf.yaml' (../lib/app/ogs-init.c:144)
+11/16 13:56:58.952: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/pcf.log' (../lib/app/ogs-init.c:147)
+11/16 13:56:58.952: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/16 13:56:58.952: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/16 13:56:58.952: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xef105dd5847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xef105dd4c15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xef105dcee620]
+./open5gs-pcfd(+0x5cb4) [0xac5b8b2e5cb4]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xef105d3d7400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xef105d3d74d8]
+./open5gs-pcfd(+0x52b0) [0xac5b8b2e52b0]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/16 16:44:11.414: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/pcf.yaml' (../lib/app/ogs-init.c:144)
+11/16 16:44:11.414: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/pcf.log' (../lib/app/ogs-init.c:147)
+11/16 16:44:11.414: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/16 16:44:11.414: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/16 16:44:11.414: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xe49942a2847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xe49942a1c15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xe499429be620]
+./open5gs-pcfd(+0x5cb4) [0xb28d48b75cb4]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xe499420a7400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xe499420a74d8]
+./open5gs-pcfd(+0x52b0) [0xb28d48b752b0]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/16 16:48:51.999: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/pcf.yaml' (../lib/app/ogs-init.c:144)
+11/16 16:48:51.999: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/pcf.log' (../lib/app/ogs-init.c:147)
+11/16 16:48:51.999: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/16 16:48:51.999: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/16 16:48:51.999: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xece1ea74847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xece1ea73c15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xece1ea6de620]
+./open5gs-pcfd(+0x5cb4) [0xb08b71795cb4]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xece1e9dc7400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xece1e9dc74d8]
+./open5gs-pcfd(+0x52b0) [0xb08b717952b0]

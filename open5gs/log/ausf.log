@@ -1,0 +1,129 @@
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/03 23:38:37.399: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/ausf.yaml' (../lib/app/ogs-init.c:144)
+11/03 23:38:37.399: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/ausf.log' (../lib/app/ogs-init.c:147)
+11/03 23:38:37.408: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/context.c:459)
+11/03 23:38:37.408: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.35:7777] (../lib/sbi/context.c:507)
+11/03 23:38:37.408: [sbi] INFO: NF Service [nausf-auth] (../lib/sbi/context.c:1997)
+11/03 23:38:37.408: [sbi] INFO: nghttp2_server() [http://172.22.0.11]:7777 (../lib/sbi/nghttp2-server.c:439)
+11/03 23:38:37.408: [app] INFO: AUSF initialize...done (../src/ausf/app.c:31)
+11/03 23:38:37.409: [sbi] INFO: [d68deac8-b905-41f0-8ab2-37d5c741091d] NF registered [Heartbeat:10s] (../lib/sbi/nf-sm.c:295)
+11/03 23:38:37.412: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/nnrf-handler.c:955)
+11/03 23:38:37.412: [sbi] INFO: [d68e46f8-b905-41f0-9c1d-f9d1038fbf14] Subscription created until 2025-11-04T23:38:37.410902+01:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+11/03 23:38:37.413: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.12:7777] (../lib/sbi/nnrf-handler.c:955)
+11/03 23:38:37.413: [sbi] INFO: [d68e9cf2-b905-41f0-9c1d-f9d1038fbf14] Subscription created until 2025-11-04T23:38:37.413107+01:00 [duration:86400000000,validity:86400.000000,patch:43200.000000] (../lib/sbi/nnrf-handler.c:874)
+11/03 23:38:37.415: [sbi] INFO: [d683310a-b905-41f0-8c1f-39f83fa5c2dc] (NRF-profile-get) NF registered (../lib/sbi/nf-sm.c:81)
+11/03 23:38:37.415: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.13:80] (../lib/sbi/context.c:2399)
+11/03 23:38:37.415: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.13:7777] (../lib/sbi/context.c:2116)
+11/03 23:38:37.415: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.13:7777] (../lib/sbi/context.c:2116)
+11/03 23:38:37.415: [sbi] INFO: Setup NF EndPoint(addr) [172.22.0.13:7777] (../lib/sbi/context.c:2116)
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/04 00:58:09.175: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/ausf.yaml' (../lib/app/ogs-init.c:144)
+11/04 00:58:09.175: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/ausf.log' (../lib/app/ogs-init.c:147)
+11/04 00:58:09.178: [sbi] INFO: Setup NF EndPoint(addr) [10.42.0.100:7777] (../lib/sbi/context.c:459)
+11/04 00:58:09.178: [sbi] INFO: Setup NF EndPoint(addr) [10.42.0.100:7777] (../lib/sbi/context.c:507)
+11/04 00:58:09.178: [sbi] INFO: NF Service [nausf-auth] (../lib/sbi/context.c:1997)
+11/04 00:58:09.179: [sock] ERROR: socket bind(2) [10.42.0.100]:7777 failed (99:Cannot assign requested address) (../lib/core/ogs-socket.c:114)
+11/04 00:58:09.179: [sock] ERROR: tcp_server() [10.42.0.100]:7777 failed (99:Cannot assign requested address) (../lib/core/ogs-tcp.c:72)
+11/04 00:58:09.179: [sbi] ERROR: Cannot start SBI server (../lib/sbi/nghttp2-server.c:414)
+11/04 00:58:09.179: [app] ERROR: Failed to initialize AUSF (../src/ausf/app.c:28)
+11/04 00:58:09.179: [app] FATAL: Open5GS initialization failed. Aborted (../src/main.c:224)
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/15 19:59:02.442: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/ausf.yaml' (../lib/app/ogs-init.c:144)
+11/15 19:59:02.442: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/ausf.log' (../lib/app/ogs-init.c:147)
+11/15 19:59:02.442: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/15 19:59:02.442: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/15 19:59:02.442: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xeb3e07bb847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xeb3e07bac15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xeb3e07ace620]
+./open5gs-ausfd(+0x4134) [0xaca06c894134]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xeb3e07257400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xeb3e072574d8]
+./open5gs-ausfd(+0x3730) [0xaca06c893730]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/15 20:02:50.393: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/ausf.yaml' (../lib/app/ogs-init.c:144)
+11/15 20:02:50.393: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/ausf.log' (../lib/app/ogs-init.c:147)
+11/15 20:02:50.393: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/15 20:02:50.393: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/15 20:02:50.394: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xe79460ac847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xe79460abc15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xe794609de620]
+./open5gs-ausfd(+0x4134) [0xbf1f1dc64134]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xe79460167400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xe794601674d8]
+./open5gs-ausfd(+0x3730) [0xbf1f1dc63730]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/15 20:05:12.645: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/ausf.yaml' (../lib/app/ogs-init.c:144)
+11/15 20:05:12.645: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/ausf.log' (../lib/app/ogs-init.c:147)
+11/15 20:05:12.645: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/15 20:05:12.645: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/15 20:05:12.645: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xf4c58f77847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xf4c58f76c15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xf4c58f68e620]
+./open5gs-ausfd(+0x4134) [0xbf08c9624134]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xf4c58ee17400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xf4c58ee174d8]
+./open5gs-ausfd(+0x3730) [0xbf08c9623730]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/15 20:16:05.077: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/ausf.yaml' (../lib/app/ogs-init.c:144)
+11/15 20:16:05.077: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/ausf.log' (../lib/app/ogs-init.c:147)
+11/15 20:16:05.077: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/15 20:16:05.077: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/15 20:16:05.077: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xf3fbd39a847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xf3fbd399c15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xf3fbd38be620]
+./open5gs-ausfd(+0x4134) [0xbd264bae4134]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xf3fbd3047400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xf3fbd30474d8]
+./open5gs-ausfd(+0x3730) [0xbd264bae3730]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/16 13:56:48.894: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/ausf.yaml' (../lib/app/ogs-init.c:144)
+11/16 13:56:48.894: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/ausf.log' (../lib/app/ogs-init.c:147)
+11/16 13:56:48.894: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/16 13:56:48.894: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/16 13:56:48.894: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xe215e30b847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xe215e30ac15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xe215e2fce620]
+./open5gs-ausfd(+0x4134) [0xb1c65b884134]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xe215e2757400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xe215e27574d8]
+./open5gs-ausfd(+0x3730) [0xb1c65b883730]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/16 16:44:01.554: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/ausf.yaml' (../lib/app/ogs-init.c:144)
+11/16 16:44:01.554: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/ausf.log' (../lib/app/ogs-init.c:147)
+11/16 16:44:01.554: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/16 16:44:01.554: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/16 16:44:01.554: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xe61ccbd3847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xe61ccbd2c15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xe61ccbc4e620]
+./open5gs-ausfd(+0x4134) [0xc197e60c4134]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xe61ccb3d7400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xe61ccb3d74d8]
+./open5gs-ausfd(+0x3730) [0xc197e60c3730]
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/16 16:48:41.975: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/ausf.yaml' (../lib/app/ogs-init.c:144)
+11/16 16:48:41.975: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/ausf.log' (../lib/app/ogs-init.c:147)
+11/16 16:48:41.975: [core] FATAL: epoll_create() failed [0] (22:Invalid argument) (../lib/core/ogs-epoll.c:78)
+11/16 16:48:41.975: [core] FATAL: epoll_init: should not be reached. (../lib/core/ogs-epoll.c:80)
+11/16 16:48:41.976: [core] FATAL: backtrace() returned 8 addresses (../lib/core/ogs-abort.c:37)
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(+0x2847c) [0xf06a0fbe847c]
+/open5gs/install/lib/aarch64-linux-gnu/libogscore.so.2(ogs_pollset_create+0x3b8) [0xf06a0fbdc15c]
+/open5gs/install/lib/aarch64-linux-gnu/libogsapp.so.2(ogs_app_initialize+0x63c) [0xf06a0fafe620]
+./open5gs-ausfd(+0x4134) [0xc156327b4134]
+/lib/aarch64-linux-gnu/libc.so.6(+0x27400) [0xf06a0f287400]
+/lib/aarch64-linux-gnu/libc.so.6(__libc_start_main+0x98) [0xf06a0f2874d8]
+./open5gs-ausfd(+0x3730) [0xc156327b3730]

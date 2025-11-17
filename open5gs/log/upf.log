@@ -1,0 +1,28 @@
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/03 23:38:38.108: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/upf.yaml' (../lib/app/ogs-init.c:144)
+11/03 23:38:38.108: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/upf.log' (../lib/app/ogs-init.c:147)
+11/03 23:38:38.171: [metrics] INFO: metrics_server() [http://172.22.0.8]:9091 (../lib/metrics/prometheus/context.c:391)
+11/03 23:38:38.171: [pfcp] INFO: pfcp_server() [172.22.0.8]:8805 (../lib/pfcp/path.c:30)
+11/03 23:38:38.172: [gtp] INFO: gtp_server() [172.22.0.8]:2152 (../lib/gtp/path.c:30)
+11/03 23:38:38.173: [app] INFO: UPF initialize...done (../src/upf/app.c:31)
+11/03 23:38:38.269: [upf] INFO: PFCP associated [172.22.0.7]:8805 (../src/upf/pfcp-sm.c:168)
+11/03 23:38:40.677: [upf] WARNING: PFCP[RSP] has already been associated [172.22.0.7]:8805 (../src/upf/pfcp-sm.c:262)
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/04 00:58:09.895: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/upf.yaml' (../lib/app/ogs-init.c:144)
+11/04 00:58:09.895: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/upf.log' (../lib/app/ogs-init.c:147)
+11/04 00:58:09.902: [metrics] ERROR: Cannot start Prometheus HTTP server (../lib/metrics/prometheus/context.c:375)
+11/04 00:58:09.902: [sock] ERROR: socket bind(2) [10.42.0.110]:8805 failed (99:Cannot assign requested address) (../lib/core/ogs-socket.c:114)
+11/04 00:58:09.902: [sock] ERROR: udp_server() [10.42.0.110]:8805 failed (99:Cannot assign requested address) (../lib/core/ogs-udp.c:67)
+11/04 00:58:09.902: [app] ERROR: Failed to initialize UPF (../src/upf/app.c:28)
+11/04 00:58:09.902: [app] FATAL: Open5GS initialization failed. Aborted (../src/main.c:224)
+Open5GS daemon v2.7.6-78-g47d0062
+
+11/09 20:49:06.597: [app] INFO: Configuration: '/open5gs/install/etc/open5gs/upf.yaml' (../lib/app/ogs-init.c:144)
+11/09 20:49:06.597: [app] INFO: File Logging: '/open5gs/install/var/log/open5gs/upf.log' (../lib/app/ogs-init.c:147)
+11/09 20:49:06.600: [metrics] ERROR: Cannot start Prometheus HTTP server (../lib/metrics/prometheus/context.c:375)
+11/09 20:49:06.600: [sock] ERROR: socket bind(2) [10.42.0.112]:8805 failed (99:Cannot assign requested address) (../lib/core/ogs-socket.c:114)
+11/09 20:49:06.600: [sock] ERROR: udp_server() [10.42.0.112]:8805 failed (99:Cannot assign requested address) (../lib/core/ogs-udp.c:67)
+11/09 20:49:06.600: [app] ERROR: Failed to initialize UPF (../src/upf/app.c:28)
+11/09 20:49:06.600: [app] FATAL: Open5GS initialization failed. Aborted (../src/main.c:224)
