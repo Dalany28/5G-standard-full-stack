@@ -1,0 +1,23 @@
+mcc: '001'
+mnc: '01'
+
+nci: '0x000000010'
+idLength: 32
+tac: 1
+
+cellBarred: false
+
+linkIp: 192.168.0.131      # gNB binds here
+ngapIp: 192.168.0.131    # NGAP connection
+gtpIp: 192.168.0.131       # GTP connection
+
+# AMF
+amfConfigs:
+  - address: 192.168.0.111  # AMF IP reachable from gNB
+    port: 38412
+
+# List of supported S-NSSAIs by this gNB
+slices:
+  - sst: 1
+
+ignoreStreamIds: true

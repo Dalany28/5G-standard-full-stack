@@ -1,0 +1,20 @@
+smf:
+  pfcp:
+    server:
+      - address: 192.168.0.111
+
+  gtpc:
+    server:
+      - address: 192.168.0.112
+
+  gtpu:
+    server:
+      - address: 192.168.0.111
+
+  session:
+    - subnet: 10.45.0.1/16
+      dnn: internet
+
+  dns:
+    - 8.8.8.8
+    - 8.8.4.4
