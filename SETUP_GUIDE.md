@@ -29,7 +29,7 @@ This guide explains how to set up a 5G testbed using Open5GS and UERANSIM on a s
 ├── docs/ # Documentation & screenshots
 ├── open5gs/ # Full Open5GS installation folder
 ├── UERANSIM/ # Full UERANSIM installation folder
-└── SETUP_GUIDE.md # This guide
+└── SETUP_GUIDE.md 
 
 ---
 
@@ -37,8 +37,8 @@ This guide explains how to set up a 5G testbed using Open5GS and UERANSIM on a s
 
 1. Build and run Open5GS containers:
 ```bash
-docker-compose build
-docker-compose up -d
+docker-compose -f sa-deploy.yaml build
+docker-compose -f sa-deploy.yaml up -d
 Verify containers are running:
 docker ps
 Use host networking for containers:
@@ -55,18 +55,16 @@ net.ipv4.ip_forward=1
 sudo sysctl -p
 Configure NAT:
 sudo iptables -t nat -A POSTROUTING -s 10.45.0.0/16 ! -o ogstun -j MASQUERADE
-Screenshot Placeholder: docs/ogstun_setup.png
 5. YAML Configurations
 5.1 Core (Open5GS)
 core/amf.yaml
 core/smf.yaml
 core/upf.yaml
-Screenshot Placeholder: docs/core_yaml.png
+Core network components: docs/s1.png
 5.2 RAN (gNB)
 ran/open5gs-gnb.yaml
 5.3 UE
 ran/open5gs-ue.yaml
-Screenshot Placeholder: docs/ran_yaml.png
 6. Running the Network
 6.1 Launch gNB
 cd UERANSIM
@@ -79,7 +77,6 @@ Ping between gNB ↔ AMF:
 ping 192.168.0.111
 Check SCTP port (38412) is listening:
 ss -lntp | grep 38412
-Screenshot Placeholder: docs/connection_check.png
 7. Troubleshooting Checklist
 Problem	Solution
 UE cannot connect to gNB	Check IP addresses in YAML files, ensure gNB and AMF IP match host network
