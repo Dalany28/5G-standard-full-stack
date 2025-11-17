@@ -1,363 +1,269 @@
-@ -1 +1,363 @@
 
-# 🧪 Full 5G Implementation Installation Guide
+# E2E 5G Testbed Setup Guide
 
-This document provides a full walkthrough for installing and configuring the 5G testbed environment. It includes hardware and software requirements, step-by-step instructions, and test validation.
-
----
-
-## 📦 Table of Contents
-
-1. [Overview](#-overview)
-2. [System Requirements](#-system-requirements)
-3. [Hardware Setup](#-hardware-setup)
-4. [Software Installation](#-software-installation)
-   - [1. Operating System](#1-operating-system)
-   - [2. Dependencies](#2-dependencies)
-   - [3. Testbed Software](#3-testbed-software)
-5. [Configuration](#-configuration)
-6. [Running the Testbed](#-running-the-testbed)
-7. [Validation & Testing](#-validation--testing)
-8. [Troubleshooting](#-troubleshooting)
-9. [References](#-references)
+This guide explains how to set up a 5G testbed using Open5GS and UERANSIM on a single Ubuntu VM. It includes installation, configuration, running the network, and troubleshooting.
 
 ---
 
-## 🧾 Overview
 
-This testbed simulates a distributed IoT environment for E2E 5G trust management.
-It includes the following minimum configuration: C-Plane have one U-Planes, U-Plane have one DN. and one UE connects to the DN.
----
+## 1. Prerequisites
 
-## 🖥️ System Requirements
+### ⚙️ System Requirements
+### System Requirements
+- 🖥 OS: Ubuntu 24.04
+- 💾 RAM: 4GB+ recommended
+- 🗄 Disk: 20GB free
+- 🌐 Network: Ethernet/Wi-Fi
 
-### Tested Specs
 
-- OS: Ubuntu 24.04
-- RAM: 1GB
-- Disk: 20GB free
-- Network: Ethernet/Wi-Fi
-
----
-
-## 🔌 Hardware Setup
-
-### Components
-
-- Raspberry Pi Zero W
-- VMWare Host
-
-### Main Diagram
-
-*(To add the diagram here)*
+### Software
+- Docker & Docker Compose
+- Python3
+- Open5GS v2.7.2
+- UERANSIM v3.2.7
 
 ---
 
-## 🧰 Software Installation
+## 2. 📁 Folder Structure
 
-### 1. Operating System
-
-Install Ubuntu Server on all four nodes:
-
-```bash
-sudo apt update && sudo apt upgrade -y
 ```
 
-Flash image to SD card using `Raspberry Pi Imager`.
+5G-standard-full-stack/
+│
+├── core/          # Contains AMF, SMF, UPF YAML configs
+├── ran/           # Contains gNB and UE YAML configs
+├── docs/          # Documentation & screenshots
+├── open5gs/       # Full Open5GS installation folder
+├── UERANSIM/      # Full UERANSIM installation folder
+└── SETUP_GUIDE.md
 
-### 2. Dependencies
-
-Install required packages:
-
-```bash
-sudo apt install -y python3 python3-pip docker docker-compose
 ```
 
-### 3. Network Stack Components
+## 3. 🐳 Docker Setup
+The 5G core network (Open5GS) runs inside Docker containers. The steps below help you set up and run the core network.
 
-The 5GC, UE, and RAN components used in this testbed are:
+1. Build and run Open5GS containers:
 
-- **5GC:** [Open5GS v2.7.2 (2024.08.04)](https://github.com/open5gs/open5gs)
-- **UE / RAN:** [UERANSIM v3.2.7 (2025.02.11)](https://github.com/aligungr/UERANSIM)
+```bash
+docker-compose -f sa-deploy.yaml build
+docker-compose -f sa-deploy.yaml up -d
+```
+2. Verify containers are running:
 
-## 🛠️ Build Instructions
+```bash
+docker ps
+```
+You should see containers for **AMF, SMF, UPF, NRF**, and other core components.
 
-Please refer to the following official guides for building **Open5GS** and **UERANSIM** from source:
+3. Use host-networking for containers:
 
-- **Open5GS v2.7.2:** [Building Open5GS from Sources](https://open5gs.org/open5gs/docs/guide/02-building-open5gs-from-sources/)
-- **UERANSIM v3.2.7:** [Installation Guide](https://github.com/aligungr/UERANSIM/wiki/Installation)
+```bash
+ docker run --network host docker_open5gs
+```
+**⚠️ **Note****: Using host networking ensures that IP addresses in your YAML configuration match those used by the containers.
 
----
-## 🖥️ Machines Overview
-
-Each VM used in the testbed is described below:
-
-| VM # | Software & Role           | IP Address           | OS            | Memory | HDD  |
-|------|----------------------------|-----------------------|----------------|--------|------|
-| VM1  | Open5GS 5GC C-Plane       | 10.42.0.100/24     | Ubuntu 24.04   | 4GB    | 30GB |
-| VM2  | Open5GS 5GC U-Plane       | 10.42.0.110/24     | Ubuntu 24.04   | 2GB    | 30GB |
-| VM3  | UERANSIM RAN (gNodeB)     | 10.42.0.111/24     | Ubuntu 24.04   | 2GB    | 30GB |
-| VM4  | UERANSIM UE               | 10.42.0.112/24     | Ubuntu 24.04   | 512MB    | 20GB |
-
-### 📱 UE Information
-
-| UE ID | IMSI              | APN      | Auth Type |
-|-------|-------------------|----------|-----------|
-| UE0   | 001010000000000   | internet | OPc       |
-
----
-
-### 🌐 DN (Data Network) Information
-
-| DN Subnet     | Tunnel Interface | DN Interface |
-|---------------|------------------|--------------|
-| 10.45.0.0/16  | ogstun           | internet     |
-
-
-# ⚙️ Configuration
-
-## Changes in configuration files of Open5GS 5GC C-Plane
-
-### 🧵 Setting Up TUN Device (Non-Persistent After Reboot)
-
-Use the following commands to set up the `ogstun` TUN interface manually:
+## 4. TUN interface and NAT
+The **TUN interface** is used to simulate the data plane for 5G UE traffic. NAT allows packets from the virtual interface to reach the internet.
+### 4.1 Create TUN device `ogstun`:
 
 ```bash
 sudo ip tuntap add name ogstun mode tun
 sudo ip addr add 10.45.0.1/16 dev ogstun
-sudo ip addr add 2001:db8:cafe::1/48 dev ogstun
 sudo ip link set ogstun up
 ```
-
-⚠️ Note: These settings are **not persistent** and will be lost after a reboot.
-
-### ⚙️ Configuration Change (YAML)
-
-The following changes are made in `etc/open5gs/amf.yaml`. **x** denotes a removal, and **+** denotes an addition.
-
-```diff
-# etc/open5gs/amf.yaml:
-
-- x      - address: 127.0.0.5
-+ +      - address: 192.168.0.111
-
-- plmn_id:
-- x        mcc: 999
-- x        mnc: 70
-+ +        mcc: 001
-+ +        mnc: 01
--       amf_id:
-
-tai:
-  - plmn_id:
-- x        mcc: 999
-- x        mnc: 70
-+ +        mcc: 001
-+ +        mnc: 01
--       tac: 1
-
-plmn_support:
-  - plmn_id:
-- x        mcc: 999
-- x        mnc: 70
-+ +        mcc: 001
-+ +        mnc: 01
-
-```
-
-### ⚙️ Configuration Change (YAML)
-
-The following changes are made in `etc/open5gs/nrf.yaml`. **x** denotes a removal, and **+** denotes an addition.
-
-```diff
-# etc/open5gs/nrf.yaml:
-
- plmn_id:
-- x        mcc: 999
-- x        mnc: 70
-+ +        mcc: 001
-+ +        mnc: 01
-  sbi:
-
-```
-
-
-### ⚙️ Configuration Change (YAML)
-
-The following changes are made in `etc/open5gs/smf.yaml`. **x** denotes a removal, and **+** denotes an addition.
-
-```diff
-# etc/open5gs/smf.yaml:
-
-pfcp:
-  server:
-- x      - address: 127.0.0.4
-+ +      - address: 192.168.0.111
-
-- x        - address: 127.0.0.7
-- x  gtpc:
-- x    server:
-- x      - address: 127.0.0.4
-+ +      - address: 192.168.0.112
-+ +        dnn: internet
-
-gtpu:
-  server:
-- x      - address: 127.0.0.4
-+ +      - address: 192.168.0.111
-
-session:
-  - subnet: 10.45.0.1/16
-- x    - subnet: 2001:db8:cafe::1/48
-+ +      dnn: internet
-
-dns:
-  - 8.8.8.8
-  - 8.8.4.4
-- x    - 2001:4860:4860::8888
-- x    - 2001:4860:4860::8844
-
-#  freeDiameter: /root/open5gs/install/etc/freeDiameter/smf.conf
-```
-
-## Changes in configuration files of Open5GS 5GC U-Plane
-### ⚙️ Configuration Change (YAML)
-
-The following changes are made in `etc/open5gs/upf.yaml`. **x** denotes a removal, and **+** denotes an addition.
-
-```diff
-# etc/open5gs/upf.yaml:
-
-server:
-- x      - address: 127.0.0.7
-+ +      - address: 192.168.0.112
-
-gtpu:
-  server:
-- x      - address: 127.0.0.7
-+ +      - address: 192.168.0.112
-
-session:
-  - subnet: 10.45.0.1/16
-- x    - subnet: 2001:db8:cafe::1/48
-+ +      dnn: internet
-+ +      dev: ogstun
-```
-
-
-### 🔧 Enabling IP Forwarding
-
-To enable IP forwarding, uncomment the following line in `/etc/sysctl.conf`:
-
+### 4.2 Enabling IP forwarding:
 ```bash
+sudo nano /etc/sysctl.conf
+# Uncomment or add the line:
 net.ipv4.ip_forward=1
-```
-
-Then, apply the changes by running:
-
-```bash
 sudo sysctl -p
 ```
-
-### 🔧 TUN Interface Setup and NAT Configuration
-
-To set up the `ogstun` TUN interface and configure NAT, run the following commands:
-
+### 4.3 Configure NAT:
 ```bash
-# Create the TUN device
-sudo ip tuntap add name ogstun mode tun
-
-# Assign IP address to the TUN interface
-sudo ip addr add 10.45.0.1/16 dev ogstun
-
-# Bring the interface up
-sudo ip link set ogstun up
-
-# Configure NAT for the subnet
 sudo iptables -t nat -A POSTROUTING -s 10.45.0.0/16 ! -o ogstun -j MASQUERADE
 ```
-## Changes in configuration files of RAN
-### ⚙️ Configuration Change (YAML)
+💡 **Tip**: Verify interface status using `ip addr show ogstun`. It should be **UP** once UE attaches.
 
-The following changes are made in `UERANSIM/config/open5gs-gnb.yaml`. **x** denotes a removal, and **+** denotes an addition.
 
-```diff
-# UERANSIM/config/open5gs-gnb.yaml:
+## 5. 📝 YAML Configurations
+YAML files define the network behavior, IP addresses, PLMN info, and connectivity between core and RAN. Make sure all IPs are consistent across files.
+### 5.1 Core (Open5GS)
 
- mcc: '999'          # Mobile Country Code value
- mnc: '70'           # Mobile Network Code value (2 or 3 digits)
-+ +   mcc: '001'      # Mobile Country Code value
-+ +   mnc: '01'       # Mobile Network Code value (2 or 3 digits)
+- `core/amf.yaml`
+```yaml
+amf:
+  sbi:
+    server:
+      address: 192.168.0.111
+      port: 7777
 
- linkIp: 127.0.0.1   # gNB's local IP address for Radio Link Simulation (Usually same with local IP)
- ngapIp: 127.0.0.1   # gNB's local IP address for N2 Interface (Usually same with local IP)
- gtpIp: 127.0.0.1    # gNB's local IP address for N3 Interface (Usually same with local IP)
-+ +   linkIp: 192.168.0.131   # gNB's local IP address for Radio Link Simulation (Usually same with local IP)
-+ +   ngapIp: 192.168.0.131   # gNB's local IP address for N2 Interface (Usually same with local IP)
-+ +   gtpIp: 192.168.0.131    # gNB's local IP address for N3 Interface (Usually same with local IP)
+  guami:
+    - plmn_id:
+        mcc: 001
+        mnc: 01
+      amf_id:
+        region: 2
+        set: 1
 
-# List of AMF address information
+  ngap:
+    server:
+      - address: 192.168.0.111
+
+  plmn_support:
+    - plmn_id:
+        mcc: 001
+        mnc: 01
+
+  tai:
+    - plmn_id:
+        mcc: 001
+        mnc: 01
+      tac: 1
+```
+- `core/smf.yaml`
+```yaml
+smf:
+  pfcp:
+    server:
+      - address: 192.168.0.111
+
+  gtpc:
+    server:
+      - address: 192.168.0.112
+
+  gtpu:
+    server:
+      - address: 192.168.0.111
+
+  session:
+    - subnet: 10.45.0.1/16
+      dnn: internet
+
+  dns:
+    - 8.8.8.8
+    - 8.8.4.4
+
+```
+    
+- `core/upf.yaml`
+```yaml
+upf:
+  pfcp:
+    server:
+      - address: 192.168.0.112
+
+  gtpu:
+    server:
+      - address: 192.168.0.112
+
+  session:
+    - subnet: 10.45.0.1/16
+      dnn: internet
+      dev: ogstun
+```
+    
+
+
+### 5.2 RAN (gNB)
+
+-  `ueransim/config/open5gs-gnb.yaml`
+```yaml
+mcc: '001'
+mnc: '01'
+
+nci: '0x000000010'
+idLength: 32
+tac: 1
+
+cellBarred: false
+
+linkIp: 192.168.0.131      # gNB binds here
+ngapIp: 192.168.0.131    
+gtpIp: 192.168.0.131       
+
+# AMF
 amfConfigs:
-- x  - address: 127.0.0.5
-+ +  - address: 192.168.0.111
+  - address: 192.168.0.111  # AMF IP 
+    port: 38412
 ```
-## Changes in configuration files of UE
-### ⚙️ Configuration Change (YAML)
+    
 
-The following changes are made in `UERANSIM/config/open5gs-ue.yaml`. **x** denotes a removal, and **+** denotes an addition.
+### 5.3 UE
 
-```diff
-# UERANSIM/config/open5gs-ue.yaml:
+-  `ueransim/config/open5gs-gnb.yaml`
+```yaml
 
-# IMSI number of the UE. IMSI = [MCC|MNC|MSISDN] (In total 15 digits)
-- x   supi: 'imsi-999700000000001'
-- +   supi: 'imsi-001010000000000'
+mcc: '001'
+mnc: '01'
 
-# Mobile Country Code value of HPLMN
-- x   mcc: '999'
-- +   mcc: '001'
-
-# Mobile Network Code value of HPLMN (2 or 3 digits)
-- x   mnc: '70'
-- +   mnc: '01'
-
-# List of gNB IP addresses for Radio Link Simulation
 gnbSearchList:
-- x  - 127.0.0.1
-- +  - 192.168.0.131
+  - 192.168.0.131   # matches open5gs-gnb.yaml IMP
+
 ```
+**⚠️Note**: Always double-check IP addresses and PLMN values between core, gNB, and UE configurations to avoid connection issues.
+## 6. Running the Network
 
-# ✅ Validation & Testing
+### 6.1 Launch gNB
+Go to your UERANSIM folder and run `nr-gnb` with your gNB config
 
-## 🚀 Running the RAN
+`
+./build/nr-gnb -c ./config/open5gs-gnb.yaml` 
 
-To start the RAN (gNodeB), run the following command:
+-   `-c`  specifies the YAML configuration for gNB.
+    
+-   Keep this terminal open because the gNB needs to run continuously.
+    
 
-```bash
-./nr-gnb -c ../config/open5gs-gnb.yaml
+You should see logs like  `Serving NGAP on ...`  or  `New signal detected for cell`.
+
+### 6.2 Launch UE
+Open a **new terminal** and run the UE:
+
+`
+sudo ./build/nr-ue -c ./config/open5gs-ue.yaml` 
+-   Use  `sudo`  because UE may require access to network interfaces.
+    
+-   📡  Logs will show UE switching states (if successful) You should see:
+```rust
+MM-DEREGISTERED -> PLMN-SEARCH -> REGISTERED
 ```
+❌ If it fails, check for **cell selection errors** or **IP mismatches** in your YAML configs (Which is the current issue we are facing)
 
-## 🚀 Running the UE
 
-To start the UE (User Equipment), run the following command with **sudo**:
 
-```bash
-sudo ./nr-ue -c ../config/open5gs-ue.yaml
-```
+## ✅ Verify Connectivity
 
-# 🛠️ Troubleshooting
+### 7.1 Ping the AMF from your host
+    
 
-| Problem             | Solution                              |
-|---------------------|----------------------------------------|
-| Node not reachable  | Check IP, power         |
+`ping 192.168.0.111` 
 
----
+### 7.2 Check if SCTP port is listening (used for NGAP between gNB and AMF):
+   
+`ss -lntp | grep 38412` 
 
-## 📚 References
+### 7.3 Check ogstun interafec:
+    
 
-- [Open5GS](https://??)
-- [Pi Imager](https://??)
-- [UERANSIM](https://??)
+`ip addr show ogstun` 
 
----
-```
+-   It should be  `UP`  once the UE attaches and data plane is active, if the interface is DOWN then it means there is no traffic between the two.
+
+
+
+
+## 7. Troubleshooting Checklist
+
+| Problem                  | Solution                                                                 |
+|--------------------------|--------------------------------------------------------------------------|
+| UE cannot connect to gNB | Check IP addresses in YAML files, ensure gNB and AMF IP match host network |
+| SCTP connection timeout  | Verify Docker containers are using host networking                        |
+| TUN interface down       | Ensure gNB/UE are running and `ogstun` interface is UP                   |
+| NAT issues               | Check `iptables -t nat` rules and IP forwarding                           |
+
+
+## 8. 📚 References
+
+- [Open5GS Official Documentation](https://open5gs.org/)
+- [UERANSIM GitHub Repository](https://github.com/aligungr/UERANSIM)
+- [Docker Documentation](https://docs.docker.com/)
