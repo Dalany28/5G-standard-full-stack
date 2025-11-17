@@ -1,0 +1,37 @@
+supi: 'imsi-001010123456789'   # Example IMSI, must be unique
+mcc: '001'
+mnc: '01'
+
+gnbSearchList:
+  - 192.168.0.131   # matches open5gs-gnb.yaml IMP
+
+key: '465B5CE8B199B49FAA5F0A2EE238A6BC'
+op: 'E8ED289DEBA952E4283B54E88E6183CA'
+opType: 'OPC'
+amf: '8000'
+
+integrity:
+  IA1: true
+  IA2: true
+  IA3: true
+
+ciphering:
+  EA1: true
+  EA2: true
+  EA3: true
+
+integrityMaxRate:
+  uplink: 'full'
+  downlink: 'full'
+
+uacAic:
+  mps: false
+  mcs: false
+
+uacAcc:
+  normalClass: 0
+  class11: false
+  class12: false
+  class13: false
+  class14: false
+  class15: false
