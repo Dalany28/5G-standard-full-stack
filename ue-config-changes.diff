@@ -1,0 +1,26 @@
+diff --git a/config/open5gs-ue.yaml b/config/open5gs-ue.yaml
+index 93629d8..c7be7d9 100644
+--- a/config/open5gs-ue.yaml
++++ b/config/open5gs-ue.yaml
+@@ -1,9 +1,9 @@
+ # IMSI number of the UE. IMSI = [MCC|MNC|MSISDN] (In total 15 digits)
+-supi: 'imsi-999700000000001'
++supi: 'imsi-001010000000001'
+ # Mobile Country Code value of HPLMN
+-mcc: '999'
++mcc: '001'
+ # Mobile Network Code value of HPLMN (2 or 3 digits)
+-mnc: '70'
++mnc: '01'
+ # SUCI Protection Scheme : 0 for Null-scheme, 1 for Profile A and 2 for Profile B
+ protectionScheme: 0
+ # Home Network Public Key for protecting with SUCI Profile A
+@@ -31,7 +31,7 @@ tunNetmask: '255.255.255.0'
+ 
+ # List of gNB IP addresses for Radio Link Simulation
+ gnbSearchList:
+-  - 127.0.0.1
++  - 192.168.0.131
+ 
+ # UAC Access Identities Configuration
+ uacAic:
