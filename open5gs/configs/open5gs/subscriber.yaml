@@ -1,9 +1,0 @@
-subscribers:
-  - imsi: "001010000000001"
-    key: "8e27b6af0e692e7502e8f1f2b0fc0fa6"
-    opc: "8e27b6af0e692e7502e8f1f2b0fc0fa6"
-    amf: "8000"
-    sqn: "0000000000000001"
-    plmn:
-      mcc: "001"
-      mnc: "01"
