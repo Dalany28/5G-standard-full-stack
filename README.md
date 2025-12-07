@@ -144,7 +144,7 @@ These files define IP addresses, PLMN IDs, TAC values, and session parameters us
 All modidications can also be found here: `open5gs/patches/`
 
 ### 5.1 Core (Open5GS)
-### Patch: amf.patch
+### amf.yaml
 ```diff
 diff --git a/./amf.yaml.orig b/./amf.yaml
 index 286074d..15459e2 100644
@@ -201,7 +201,7 @@ index 286074d..15459e2 100644
    security:
 ```
 
-### Patch: ausf.patch
+### ausf.yaml
 ```diff
 diff --git a/./ausf.yaml.orig b/./ausf.yaml
 index 3a3fea7..451e713 100644
@@ -227,7 +227,7 @@ index 3a3fea7..451e713 100644
  # SBI Server
 ```
 
-### Patch: nrf.patch
+### nrf.yaml
 ```diff
 diff --git a/./nrf.yaml.orig b/./nrf.yaml
 index b97e927..995808a 100644
@@ -250,7 +250,7 @@ index b97e927..995808a 100644
  ################################################################################
 ```
 
-### Patch: pcf.patch
+### pcf.yaml
 ```diff
 diff --git a/./pcf.yaml.orig b/./pcf.yaml
 index dadbdc9..2624ceb 100644
@@ -276,7 +276,7 @@ index dadbdc9..2624ceb 100644
        - address: 127.0.0.13
 ```
 
-### Patch: smf.patch
+### smf.yaml
 ```diff
 diff --git a/./smf.yaml.orig b/./smf.yaml
 index d6b952a..c78f97e 100644
@@ -327,7 +327,7 @@ index d6b952a..c78f97e 100644
      - 8.8.4.4
 ```
 
-### Patch: udm.patch
+### udm.yaml
 ```diff
 diff --git a/./udm.yaml.orig b/./udm.yaml
 index 6d5fa4f..6656c40 100644
@@ -353,7 +353,7 @@ index 6d5fa4f..6656c40 100644
  # Home Network Public Key
 ```
 
-### Patch: udr.patch
+### udr.yaml
 ```diff
 diff --git a/./udr.yaml.orig b/./udr.yaml
 index a9e1dcc..cdba85f 100644
@@ -379,7 +379,7 @@ index a9e1dcc..cdba85f 100644
  # SBI Server
 ```
 
-### Patch: upf.patch
+### upf.yaml
 ```diff
 diff --git a/./upf.yaml.orig b/./upf.yaml
 index d02ee0c..b59b801 100644
