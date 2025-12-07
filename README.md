@@ -140,7 +140,8 @@ cd ../
 
 ## 5. 📝 YAML Configurations
 All configuration files can be found here: `install/etc/open5gs/`.
-These files define IP addresses, PLMN IDs, TAC values, and session parameters used by the 5G Core.
+These files define IP addresses, PLMN IDs, TAC values, and session parameters used by the 5G Core. 
+All modidications can also be found here: `open5gs/patches/`
 
 ### 5.1 Core (Open5GS)
 - `core/nrf.yaml`
