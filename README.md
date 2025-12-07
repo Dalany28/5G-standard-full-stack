@@ -144,227 +144,272 @@ These files define IP addresses, PLMN IDs, TAC values, and session parameters us
 All modidications can also be found here: `open5gs/patches/`
 
 ### 5.1 Core (Open5GS)
-- `core/nrf.yaml`
-```yaml
-logger:
-  file:
-    path: /home/cplane/open5gs/install/var/log/open5gs/nrf.log
-#  level: info   # fatal|error|warn|info(default)|debug|trace
-
-global:
-  max:
-    ue: 1024  # The number of UE can be increased depending on memory size.
-#    peer: 64
-
-nrf:
-  serving:  # 5G roaming requires PLMN in NRF
-    - plmn_id:
-        mcc: 001
-        mnc: 01
-  sbi:
-    server:
-      - address: 192.168.0.111
-        port: 7777
-
+### Patch: amf.patch
+```diff
+diff --git a/./amf.yaml.orig b/./amf.yaml
+index 286074d..15459e2 100644
+--- a/./amf.yaml.orig
++++ b/./amf.yaml
+@@ -11,36 +11,36 @@ global:
+ amf:
+   sbi:
+     server:
+-      - address: 127.0.0.5
+-        port: 7777
++      - address: 192.168.0.111
++        port: 7744
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+   ngap:
+     server:
+-      - address: 127.0.0.5
++      - address: 192.168.0.111
+   metrics:
+     server:
+       - address: 127.0.0.5
+         port: 9090
+   guami:
+     - plmn_id:
+-        mcc: 999
+-        mnc: 70
++        mcc: 001
++        mnc: 01
+       amf_id:
+         region: 2
+         set: 1
+   tai:
+     - plmn_id:
+-        mcc: 999
+-        mnc: 70
++        mcc: 001
++        mnc: 01
+       tac: 1
+   plmn_support:
+     - plmn_id:
+-        mcc: 999
+-        mnc: 70
++        mcc: 001
++        mnc: 01
+       s_nssai:
+         - sst: 1
+   security:
 ```
 
-- `core/udm.yaml`
-```yaml
-logger:
-  file:
-    path: /home/cplane/open5gs/install/var/log/open5gs/udm.log
-#  level: info   # fatal|error|warn|info(default)|debug|trace
-
-global:
-  max:
-    ue: 1024  # The number of UE can be increased depending on memory size.
-#    peer: 64
-
-udm:
-  hnet:
-    - id: 1
-      scheme: 1
-      key: /home/cplane/open5gs/install/etc/open5gs/hnet/curve25519-1.key
-    - id: 2
-      scheme: 2
-      key: /home/cplane/open5gs/install/etc/open5gs/hnet/secp256r1-2.key
-    - id: 3
-      scheme: 1
-      key: /home/cplane/open5gs/install/etc/open5gs/hnet/curve25519-3.key
-    - id: 4
-      scheme: 2
-      key: /home/cplane/open5gs/install/etc/open5gs/hnet/secp256r1-4.key
-    - id: 5
-      scheme: 1
-      key: /home/cplane/open5gs/install/etc/open5gs/hnet/curve25519-5.key
-    - id: 6
-      scheme: 2
-      key: /home/cplane/open5gs/install/etc/open5gs/hnet/secp256r1-6.key
-  sbi:
-    server:
-      - address: 192.168.0.111
-        port: 7755
-    client:
-      nrf:
-        - uri: http://192.168.0.111:7777
-      scp:
-        - uri: http://192.168.0.111:7777
-
-```
-- `core/ausf.yaml`
-```yaml
-logger:
-  file:
-    path: /home/cplane/open5gs/install/var/log/open5gs/ausf.log
-#  level: info   # fatal|error|warn|info(default)|debug|trace
-
-global:
-  max:
-    ue: 1024  # The number of UE can be increased depending on memory size.
-#    peer: 64
-
-ausf:
-  sbi:
-    server:
-      - address: 192.168.0.111
-        port: 6666
-    client:
-      nrf:
-        - uri: http://192.168.0.111:7777
-      scp:
-        - uri: http://192.168.0.111:7777
-
-```
-- `core/smf.yaml`
-```yaml
-smf:
-  pfcp:
-    server:
-      - address: 192.168.0.111
-
-  gtpc:
-    server:
-      - address: 192.168.0.112
-
-  gtpu:
-    server:
-      - address: 192.168.0.111
-
-  session:
-    - subnet: 10.45.0.1/16
-      dnn: internet
-
-  dns:
-    - 8.8.8.8
-    - 8.8.4.4
-
-```
-    
-    
-- `core/pcf.yaml`
-```yaml
-db_uri: mongodb://localhost/open5gs
-logger:
-  file:
-    path: /home/cplane/open5gs/install/var/log/open5gs/pcf.log
-#  level: info   # fatal|error|warn|info(default)|debug|trace
-
-global:
-  max:
-    ue: 1024  # The number of UE can be increased depending on memory size.
-#    peer: 64
-
-pcf:
-  sbi:
-    server:
-      - address: 192.168.0.111
-        port: 7722
-    client:
-      nrf:
-        - uri: http://192.168.0.111:7777
-      scp:
-        - uri: http://192.168.0.111:7777
-  metrics:
-    server:
-      - address: 127.0.0.13
-        port: 9090
-```
-- `core/amf.yaml`
-```yaml
-amf:
-  sbi:
-    server:
-      address: 192.168.0.111
-      port: 7777
-
-  guami:
-    - plmn_id:
-        mcc: 001
-        mnc: 01
-      amf_id:
-        region: 2
-        set: 1
-
-  ngap:
-    server:
-      - address: 192.168.0.111
-
-  plmn_support:
-    - plmn_id:
-        mcc: 001
-        mnc: 01
-
-  tai:
-    - plmn_id:
-        mcc: 001
-        mnc: 01
-      tac: 1
+### Patch: ausf.patch
+```diff
+diff --git a/./ausf.yaml.orig b/./ausf.yaml
+index 3a3fea7..451e713 100644
+--- a/./ausf.yaml.orig
++++ b/./ausf.yaml
+@@ -11,13 +11,13 @@ global:
+ ausf:
+   sbi:
+     server:
+-      - address: 127.0.0.11
++      - address: 192.168.0.111
+         port: 7777
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+ 
+ ################################################################################
+ # SBI Server
 ```
 
-- `core/nssf.yaml`
-```yaml
-  GNU nano 8.4                                                                       nssf.yaml                                                                                
-logger:
-  file:
-    path: /home/cplane/open5gs/install/var/log/open5gs/nssf.log
-#  level: info   # fatal|error|warn|info(default)|debug|trace
-
-global:
-  max:
-    ue: 1024  # The number of UE can be increased depending on memory size.
-#    peer: 64
-
-nssf:
-  sbi:
-    server:
-      - address: 192.168.0.111
-        port: 6677
-    client:
-      nrf:
-        - uri: http://192.168.0.111:7777
-      scp:
-        - uri: http://192.168.0.111:7777
-      nsi:
-        - uri: http://127.0.0.10:7777
-          s_nssai:
-            sst: 1
-
+### Patch: nrf.patch
+```diff
+diff --git a/./nrf.yaml.orig b/./nrf.yaml
+index b97e927..995808a 100644
+--- a/./nrf.yaml.orig
++++ b/./nrf.yaml
+@@ -11,11 +11,11 @@ global:
+ nrf:
+   serving:  # 5G roaming requires PLMN in NRF
+     - plmn_id:
+-        mcc: 999
+-        mnc: 70
++        mcc: 001
++        mnc: 01
+   sbi:
+     server:
+-      - address: 127.0.0.10
++      - address: 192.168.0.111
+         port: 7777
+ 
+ ################################################################################
 ```
-- `core/upf.yaml`
-```yaml
-upf:
-  pfcp:
-    server:
-      - address: 192.168.0.112
 
-  gtpu:
-    server:
-      - address: 192.168.0.112
+### Patch: pcf.patch
+```diff
+diff --git a/./pcf.yaml.orig b/./pcf.yaml
+index dadbdc9..2624ceb 100644
+--- a/./pcf.yaml.orig
++++ b/./pcf.yaml
+@@ -12,13 +12,13 @@ global:
+ pcf:
+   sbi:
+     server:
+-      - address: 127.0.0.13
++      - address: 192.168.0.111
+         port: 7777
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+   metrics:
+     server:
+       - address: 127.0.0.13
+```
 
-  session:
-    - subnet: 10.45.0.1/16
-      dnn: internet
-      dev: ogstun
+### Patch: smf.patch
+```diff
+diff --git a/./smf.yaml.orig b/./smf.yaml
+index d6b952a..c78f97e 100644
+--- a/./smf.yaml.orig
++++ b/./smf.yaml
+@@ -11,25 +11,25 @@ global:
+ smf:
+   sbi:
+     server:
+-      - address: 127.0.0.4
++      - address: 192.168.0.111
+         port: 7777
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+   pfcp:
+     server:
+-      - address: 127.0.0.4
++      - address: 192.168.0.111
+     client:
+       upf:
+-        - address: 127.0.0.7
++        - address: 192.168.0.112
+   gtpc:
+     server:
+-      - address: 127.0.0.4
++      - address: 192.168.0.111
+   gtpu:
+     server:
+-      - address: 127.0.0.4
++      - address: 192.168.0.111
+   metrics:
+     server:
+       - address: 127.0.0.4
+@@ -39,6 +39,8 @@ smf:
+       gateway: 10.45.0.1
+     - subnet: 2001:db8:cafe::/48
+       gateway: 2001:db8:cafe::1
++      dnn: internet
++      dev: ogstun
+   dns:
+     - 8.8.8.8
+     - 8.8.4.4
+```
+
+### Patch: udm.patch
+```diff
+diff --git a/./udm.yaml.orig b/./udm.yaml
+index 6d5fa4f..6656c40 100644
+--- a/./udm.yaml.orig
++++ b/./udm.yaml
+@@ -30,13 +30,13 @@ udm:
+       key: /home/cplane/Downloads/open5gs/install/etc/open5gs/hnet/secp256r1-6.key
+   sbi:
+     server:
+-      - address: 127.0.0.12
++      - address: 192.168.0.111
+         port: 7777
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+ 
+ ################################################################################
+ # Home Network Public Key
+```
+
+### Patch: udr.patch
+```diff
+diff --git a/./udr.yaml.orig b/./udr.yaml
+index a9e1dcc..cdba85f 100644
+--- a/./udr.yaml.orig
++++ b/./udr.yaml
+@@ -12,13 +12,13 @@ global:
+ udr:
+   sbi:
+     server:
+-      - address: 127.0.0.20
++      - address: 192.168.0.111
+         port: 7777
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+ 
+ ################################################################################
+ # SBI Server
+```
+
+### Patch: upf.patch
+```diff
+diff --git a/./upf.yaml.orig b/./upf.yaml
+index d02ee0c..b59b801 100644
+--- a/./upf.yaml.orig
++++ b/./upf.yaml
+@@ -11,18 +11,20 @@ global:
+ upf:
+   pfcp:
+     server:
+-      - address: 127.0.0.7
++      - address: 192.168.0.112
+     client:
+-#      smf:     #  UPF PFCP Client try to associate SMF PFCP Server
+-#        - address: 127.0.0.4
++      smf:     #  UPF PFCP Client try to associate SMF PFCP Server
++        - address: 192.168.0.111
+   gtpu:
+     server:
+-      - address: 127.0.0.7
++      - address: 192.168.0.112
+   session:
+     - subnet: 10.45.0.0/16
+       gateway: 10.45.0.1
+     - subnet: 2001:db8:cafe::/48
+       gateway: 2001:db8:cafe::1
++      dnn: internet
++      dev: ogstun
+   metrics:
+     server:
+       - address: 127.0.0.7
 ```
 
 Building and Running Open5GS WebUI 
@@ -534,3 +579,5 @@ MM-DEREGISTERED -> PLMN-SEARCH -> REGISTERED
 - [Open5GS Official Documentation](https://open5gs.org/)
 - [UERANSIM GitHub Repository](https://github.com/aligungr/UERANSIM)
 - [Docker Documentation](https://docs.docker.com/)
+
+
