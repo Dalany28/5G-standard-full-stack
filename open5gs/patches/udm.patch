@@ -1,0 +1,22 @@
+diff --git a/./udm.yaml.orig b/./udm.yaml
+index 6d5fa4f..6656c40 100644
+--- a/./udm.yaml.orig
++++ b/./udm.yaml
+@@ -30,13 +30,13 @@ udm:
+       key: /home/cplane/Downloads/open5gs/install/etc/open5gs/hnet/secp256r1-6.key
+   sbi:
+     server:
+-      - address: 127.0.0.12
++      - address: 192.168.0.111
+         port: 7777
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+ 
+ ################################################################################
+ # Home Network Public Key

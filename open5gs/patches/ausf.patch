@@ -1,0 +1,22 @@
+diff --git a/./ausf.yaml.orig b/./ausf.yaml
+index 3a3fea7..451e713 100644
+--- a/./ausf.yaml.orig
++++ b/./ausf.yaml
+@@ -11,13 +11,13 @@ global:
+ ausf:
+   sbi:
+     server:
+-      - address: 127.0.0.11
++      - address: 192.168.0.111
+         port: 7777
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+ 
+ ################################################################################
+ # SBI Server

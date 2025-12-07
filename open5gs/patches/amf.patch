@@ -1,0 +1,53 @@
+diff --git a/./amf.yaml.orig b/./amf.yaml
+index 286074d..15459e2 100644
+--- a/./amf.yaml.orig
++++ b/./amf.yaml
+@@ -11,36 +11,36 @@ global:
+ amf:
+   sbi:
+     server:
+-      - address: 127.0.0.5
+-        port: 7777
++      - address: 192.168.0.111
++        port: 7744
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+   ngap:
+     server:
+-      - address: 127.0.0.5
++      - address: 192.168.0.111
+   metrics:
+     server:
+       - address: 127.0.0.5
+         port: 9090
+   guami:
+     - plmn_id:
+-        mcc: 999
+-        mnc: 70
++        mcc: 001
++        mnc: 01
+       amf_id:
+         region: 2
+         set: 1
+   tai:
+     - plmn_id:
+-        mcc: 999
+-        mnc: 70
++        mcc: 001
++        mnc: 01
+       tac: 1
+   plmn_support:
+     - plmn_id:
+-        mcc: 999
+-        mnc: 70
++        mcc: 001
++        mnc: 01
+       s_nssai:
+         - sst: 1
+   security:

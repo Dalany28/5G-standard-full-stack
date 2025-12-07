@@ -1,0 +1,22 @@
+diff --git a/./udr.yaml.orig b/./udr.yaml
+index a9e1dcc..cdba85f 100644
+--- a/./udr.yaml.orig
++++ b/./udr.yaml
+@@ -12,13 +12,13 @@ global:
+ udr:
+   sbi:
+     server:
+-      - address: 127.0.0.20
++      - address: 192.168.0.111
+         port: 7777
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+ 
+ ################################################################################
+ # SBI Server

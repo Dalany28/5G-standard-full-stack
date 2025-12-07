@@ -1,0 +1,47 @@
+diff --git a/./smf.yaml.orig b/./smf.yaml
+index d6b952a..c78f97e 100644
+--- a/./smf.yaml.orig
++++ b/./smf.yaml
+@@ -11,25 +11,25 @@ global:
+ smf:
+   sbi:
+     server:
+-      - address: 127.0.0.4
++      - address: 192.168.0.111
+         port: 7777
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+   pfcp:
+     server:
+-      - address: 127.0.0.4
++      - address: 192.168.0.111
+     client:
+       upf:
+-        - address: 127.0.0.7
++        - address: 192.168.0.112
+   gtpc:
+     server:
+-      - address: 127.0.0.4
++      - address: 192.168.0.111
+   gtpu:
+     server:
+-      - address: 127.0.0.4
++      - address: 192.168.0.111
+   metrics:
+     server:
+       - address: 127.0.0.4
+@@ -39,6 +39,8 @@ smf:
+       gateway: 10.45.0.1
+     - subnet: 2001:db8:cafe::/48
+       gateway: 2001:db8:cafe::1
++      dnn: internet
++      dev: ogstun
+   dns:
+     - 8.8.8.8
+     - 8.8.4.4

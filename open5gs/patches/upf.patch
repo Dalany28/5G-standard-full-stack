@@ -1,0 +1,29 @@
+diff --git a/./upf.yaml.orig b/./upf.yaml
+index d02ee0c..b59b801 100644
+--- a/./upf.yaml.orig
++++ b/./upf.yaml
+@@ -11,18 +11,20 @@ global:
+ upf:
+   pfcp:
+     server:
+-      - address: 127.0.0.7
++      - address: 192.168.0.112
+     client:
+-#      smf:     #  UPF PFCP Client try to associate SMF PFCP Server
+-#        - address: 127.0.0.4
++      smf:     #  UPF PFCP Client try to associate SMF PFCP Server
++        - address: 192.168.0.111
+   gtpu:
+     server:
+-      - address: 127.0.0.7
++      - address: 192.168.0.112
+   session:
+     - subnet: 10.45.0.0/16
+       gateway: 10.45.0.1
+     - subnet: 2001:db8:cafe::/48
+       gateway: 2001:db8:cafe::1
++      dnn: internet
++      dev: ogstun
+   metrics:
+     server:
+       - address: 127.0.0.7

@@ -1,0 +1,22 @@
+diff --git a/./pcf.yaml.orig b/./pcf.yaml
+index dadbdc9..2624ceb 100644
+--- a/./pcf.yaml.orig
++++ b/./pcf.yaml
+@@ -12,13 +12,13 @@ global:
+ pcf:
+   sbi:
+     server:
+-      - address: 127.0.0.13
++      - address: 192.168.0.111
+         port: 7777
+     client:
+-#      nrf:
+-#        - uri: http://127.0.0.10:7777
++      nrf:
++        - uri: http://192.168.0.111:7777
+       scp:
+-        - uri: http://127.0.0.200:7777
++        - uri: http://192.168.0.111:7777
+   metrics:
+     server:
+       - address: 127.0.0.13

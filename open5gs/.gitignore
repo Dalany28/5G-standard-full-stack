@@ -1,0 +1,30 @@
+install/
+
+# This directory is fetched during first build and is present in this directory
+subprojects/freeDiameter
+subprojects/libtins
+subprojects/prometheus-client-c
+subprojects/usrsctp
+
+webui/.next
+# Build artifacts
+build/
+install/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Object files / binaries
+*.o
+*.so
+*.a
+*.bin
+*.exe
+
+# Python cache
+__pycache__/
+
+# Docker / Vagrant generated files
+docker/*
+vagrant/*

@@ -1,0 +1,19 @@
+diff --git a/./nrf.yaml.orig b/./nrf.yaml
+index b97e927..995808a 100644
+--- a/./nrf.yaml.orig
++++ b/./nrf.yaml
+@@ -11,11 +11,11 @@ global:
+ nrf:
+   serving:  # 5G roaming requires PLMN in NRF
+     - plmn_id:
+-        mcc: 999
+-        mnc: 70
++        mcc: 001
++        mnc: 01
+   sbi:
+     server:
+-      - address: 127.0.0.10
++      - address: 192.168.0.111
+         port: 7777
+ 
+ ################################################################################
